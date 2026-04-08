@@ -1,0 +1,16 @@
+<h1>Add a recipe</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description" rows="3"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Image URL</mat-label>
+    <input matInput formControlName="imgUrl" type="url" />
+  </mat-form-field>
+  <button mat-flat-button color="primary" type="submit">Save</button>
+</form>

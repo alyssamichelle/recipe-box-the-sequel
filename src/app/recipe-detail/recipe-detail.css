@@ -1,0 +1,42 @@
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 36rem;
+  padding: 1.5rem;
+}
+
+.recipe-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.recipe-description {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.recipe-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.servings {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ingredients-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.ingredient-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}

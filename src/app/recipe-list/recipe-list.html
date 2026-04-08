@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+  <span>{{ appTitle() }}</span>
+  <span class="toolbar-spacer"></span>
+  <a mat-button routerLink="/recipes/new">Add recipe</a>
+</mat-toolbar>
+
+<main class="list-page">
+  <label class="search-label" for="recipe-search">Search recipes</label>
+  <input
+    id="recipe-search"
+    class="search-input"
+    type="search"
+    name="recipeSearch"
+    autocomplete="off"
+    [ngModel]="searchTerm()"
+    (ngModelChange)="searchTerm.set($event)"
+  />
+
+  <ul class="recipe-links">
+    @for (recipe of filteredRecipes(); track recipe.id) {
+      <li>
+        <a [routerLink]="['/recipes', recipe.id]">
+          {{ recipe.name }}
+          @if (recipe.isFavorite) {
+            <span class="favorite-star" aria-label="Favorite">★</span>
+          }
+        </a>
+      </li>
+    }
+  </ul>
+</main>

@@ -1,0 +1,36 @@
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.list-page {
+  padding: 1.5rem;
+  max-width: 40rem;
+}
+
+.search-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 24rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.recipe-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recipe-links li {
+  margin-bottom: 0.5rem;
+}
+
+.favorite-star {
+  margin-left: 0.35rem;
+  color: goldenrod;
+}

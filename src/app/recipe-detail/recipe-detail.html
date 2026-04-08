@@ -1,0 +1,35 @@
+@if (recipe(); as recipe) {
+  <article class="recipe-card">
+    <h1 class="recipe-name">{{ recipe.name }}</h1>
+    <p class="recipe-description">{{ recipe.description }}</p>
+    <img
+      class="recipe-image"
+      [src]="recipe.imgUrl"
+      [attr.alt]="'Photo of ' + recipe.name"
+      width="300"
+      height="200"
+    />
+
+    <div class="servings">
+      <span>Servings: {{ servings() }}</span>
+      <button
+        mat-button
+        type="button"
+        (click)="bumpServings(-1)"
+        [disabled]="servings() <= 1"
+      >
+        −
+      </button>
+      <button mat-button type="button" (click)="bumpServings(1)">+</button>
+    </div>
+
+    <h2 class="ingredients-heading">Ingredients</h2>
+    <ul class="ingredient-list">
+      @for (ingredient of adjustedIngredients(); track $index) {
+        <li>{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}</li>
+      }
+    </ul>
+  </article>
+} @else {
+  <p role="status">Recipe not found.</p>
+}
