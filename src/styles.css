@@ -33,6 +33,17 @@ body {
   }
 }
 
+/* Recipe list: empty floating label must sit past TextBox prefix (search SVG icon) */
+.recipe-list-search-field .k-floating-label-container.k-empty > .k-floating-label {
+  inset-inline-start: 1.4rem;
+}
+
+.recipe-list-search-field .k-floating-label-container.k-focus > .k-floating-label {
+  color: var(--kendo-color-subtle);
+  font-size: 10px;
+  transition: font-size .8s cubic-bezier(0.075, 0.82, 0.165, 1), color 0.2s ease-in-out;
+}
+
 /* Reusable shell: responsive horizontal padding + max content width */
 .k-app-shell {
   box-sizing: border-box;

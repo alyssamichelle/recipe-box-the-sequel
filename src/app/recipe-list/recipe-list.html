@@ -22,21 +22,23 @@
 <section class="k-app-shell k-py-6 k-d-flex k-flex-col k-gap-6" aria-labelledby="recipe-list-heading">
   <h1 id="recipe-list-heading" class="k-sr-only">Browse recipes</h1>
 
-  <kendo-floatinglabel text="Search recipes" labelCssClass="k-mb-2">
-    <kendo-textbox
-      name="recipeSearch"
-      size="medium"
-      [clearButton]="true"
-      placeholder="Name or description"
-      [ngModel]="searchTerm()"
-      (ngModelChange)="searchTerm.set($event)"
-      [inputAttributes]="{ type: 'search', autocomplete: 'off' }"
-    >
-      <ng-template kendoTextBoxPrefixTemplate>
-        <kendo-svgicon [icon]="icons.search" aria-hidden="true" />
-      </ng-template>
-    </kendo-textbox>
-  </kendo-floatinglabel>
+  <div class="recipe-list-search-field k-w-full">
+    <kendo-floatinglabel text="Search recipes" labelCssClass="k-mb-2">
+      <kendo-textbox
+        name="recipeSearch"
+        size="medium"
+        [clearButton]="true"
+        placeholder="Name or description"
+        [ngModel]="searchTerm()"
+        (ngModelChange)="searchTerm.set($event)"
+        [inputAttributes]="{ type: 'search', autocomplete: 'off' }"
+      >
+        <ng-template kendoTextBoxPrefixTemplate>
+          <kendo-svgicon [icon]="icons.search" aria-hidden="true" />
+        </ng-template>
+      </kendo-textbox>
+    </kendo-floatinglabel>
+  </div>
 
   @if (filteredRecipes().length === 0) {
     <div
