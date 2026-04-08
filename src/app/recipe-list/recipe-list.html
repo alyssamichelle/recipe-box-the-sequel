@@ -49,48 +49,50 @@
       <p class="k-m-0 k-mt-2 k-color-subtle">Try a different term or clear the search field.</p>
     </div>
   } @else {
-    <div role="list" aria-label="Matching recipes">
-      <kendo-stacklayout class="k-w-full" gap="24" orientation="vertical">
-        @for (dataItem of filteredRecipes(); track dataItem.id) {
-          <div role="listitem">
-            <kendo-card width="100%">
-              <kendo-card-body class="k-p-md">
-                <kendo-stacklayout orientation="vertical" gap="16" class="k-w-full k-min-w-0">
-                  <div class="k-d-flex k-justify-content-between k-align-items-start k-gap-md k-flex-wrap k-w-full">
-                    <div class="k-d-flex k-flex-col k-gap-1 k-min-w-0">
-                      <h2 kendoCardTitle class="k-h5 k-m-0 k-font-weight-semibold k-text-ellipsis">
-                        {{ dataItem.name }}
-                      </h2>
-                      <p kendoCardSubtitle class="k-m-0 k-color-subtle k-font-size-sm">
-                        {{ dataItem.description }}
-                      </p>
-                    </div>
-                    @if (dataItem.isFavorite) {
-                      <span class="k-d-inline-flex k-align-items-center k-gap-xs k-color-primary">
-                        <kendo-svgicon [icon]="icons.star" aria-hidden="true" />
-                        <span class="k-font-size-sm k-font-weight-medium">Favorite</span>
-                      </span>
-                    }
+    <div
+      role="list"
+      aria-label="Matching recipes"
+      class="k-d-flex k-flex-col k-gap-8 k-w-full"
+    >
+      @for (dataItem of filteredRecipes(); track dataItem.id) {
+        <div role="listitem" class="k-min-w-0">
+          <kendo-card width="100%">
+            <kendo-card-body class="k-p-md">
+              <kendo-stacklayout orientation="vertical" gap="16" class="k-w-full k-min-w-0">
+                <div class="k-d-flex k-justify-content-between k-align-items-start k-gap-md k-flex-wrap k-w-full">
+                  <div class="k-d-flex k-flex-col k-gap-1 k-min-w-0">
+                    <h2 kendoCardTitle class="k-h5 k-m-0 k-font-weight-semibold k-text-ellipsis">
+                      {{ dataItem.name }}
+                    </h2>
+                    <p kendoCardSubtitle class="k-m-0 k-color-subtle k-font-size-sm">
+                      {{ dataItem.description }}
+                    </p>
                   </div>
-                  <div class="k-d-flex k-justify-content-end">
-                    <button
-                      kendoButton
-                      fillMode="outline"
-                      themeColor="primary"
-                      size="large"
-                      type="button"
-                      [routerLink]="['/recipes', dataItem.id]"
-                      [attr.aria-label]="'Open recipe: ' + dataItem.name"
-                    >
-                      View recipe
-                    </button>
-                  </div>
-                </kendo-stacklayout>
-              </kendo-card-body>
-            </kendo-card>
-          </div>
-        }
-      </kendo-stacklayout>
+                  @if (dataItem.isFavorite) {
+                    <span class="k-d-inline-flex k-align-items-center k-gap-xs k-color-primary">
+                      <kendo-svgicon [icon]="icons.star" aria-hidden="true" />
+                      <span class="k-font-size-sm k-font-weight-medium">Favorite</span>
+                    </span>
+                  }
+                </div>
+                <div class="k-d-flex k-justify-content-end">
+                  <button
+                    kendoButton
+                    fillMode="outline"
+                    themeColor="primary"
+                    size="large"
+                    type="button"
+                    [routerLink]="['/recipes', dataItem.id]"
+                    [attr.aria-label]="'Open recipe: ' + dataItem.name"
+                  >
+                    View recipe
+                  </button>
+                </div>
+              </kendo-stacklayout>
+            </kendo-card-body>
+          </kendo-card>
+        </div>
+      }
     </div>
   }
 </section>
