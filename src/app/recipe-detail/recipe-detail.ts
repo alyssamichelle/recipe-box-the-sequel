@@ -9,14 +9,15 @@ import {
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { MatButtonModule } from '@angular/material/button';
+import { KENDO_BUTTONS } from '@progress/kendo-angular-buttons';
+import { KENDO_LAYOUT } from '@progress/kendo-angular-layout';
 import { Ingredient, RecipeModel } from '../models';
 import { RecipeService } from '../recipe';
 
 @Component({
   selector: 'app-recipe-detail',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule],
+  imports: [KENDO_BUTTONS, KENDO_LAYOUT],
   templateUrl: './recipe-detail.html',
   styleUrl: './recipe-detail.css',
 })

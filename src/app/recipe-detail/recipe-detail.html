@@ -1,35 +1,69 @@
 @if (recipe(); as recipe) {
-  <article class="recipe-card">
-    <h1 class="recipe-name">{{ recipe.name }}</h1>
-    <p class="recipe-description">{{ recipe.description }}</p>
-    <img
-      class="recipe-image"
-      [src]="recipe.imgUrl"
-      [attr.alt]="'Photo of ' + recipe.name"
-      width="300"
-      height="200"
-    />
+  <article class="k-app-shell k-py-6">
+    <kendo-card width="100%">
+      <kendo-card-header class="k-p-md">
+        <h1 kendoCardTitle class="k-h3 k-m-0 k-font-weight-bold">{{ recipe.name }}</h1>
+        <p kendoCardSubtitle class="k-m-0 k-mt-2 k-font-size-md k-color-subtle">
+          {{ recipe.description }}
+        </p>
+      </kendo-card-header>
+      <img
+        kendoCardMedia
+        class="k-w-full recipe-hero"
+        [src]="recipe.imgUrl"
+        [attr.alt]="'Photo of ' + recipe.name"
+        width="800"
+        height="450"
+        loading="lazy"
+      />
+      <kendo-card-body class="k-p-md">
+        <kendo-stacklayout orientation="vertical" gap="16">
+          <div
+            class="k-d-flex k-align-items-center k-flex-wrap k-gap-3"
+            role="group"
+            aria-label="Adjust servings"
+          >
+            <span class="k-font-weight-semibold" aria-live="polite">Servings: {{ servings() }}</span>
+            <button
+              kendoButton
+              fillMode="outline"
+              themeColor="primary"
+              size="medium"
+              type="button"
+              [disabled]="servings() <= 1"
+              (click)="bumpServings(-1)"
+              aria-label="Decrease servings"
+            >
+              −
+            </button>
+            <button
+              kendoButton
+              fillMode="outline"
+              themeColor="primary"
+              size="medium"
+              type="button"
+              (click)="bumpServings(1)"
+              aria-label="Increase servings"
+            >
+              +
+            </button>
+          </div>
 
-    <div class="servings">
-      <span>Servings: {{ servings() }}</span>
-      <button
-        mat-button
-        type="button"
-        (click)="bumpServings(-1)"
-        [disabled]="servings() <= 1"
-      >
-        −
-      </button>
-      <button mat-button type="button" (click)="bumpServings(1)">+</button>
-    </div>
-
-    <h2 class="ingredients-heading">Ingredients</h2>
-    <ul class="ingredient-list">
-      @for (ingredient of adjustedIngredients(); track $index) {
-        <li>{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}</li>
-      }
-    </ul>
+          <h2 class="k-h5 k-m-0 k-font-weight-semibold">Ingredients</h2>
+          <ul class="k-m-0 k-pl-6 k-d-flex k-flex-col k-gap-2">
+            @for (ingredient of adjustedIngredients(); track $index) {
+              <li class="recipe-ingredient-line">
+                {{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}
+              </li>
+            }
+          </ul>
+        </kendo-stacklayout>
+      </kendo-card-body>
+    </kendo-card>
   </article>
 } @else {
-  <p role="status">Recipe not found.</p>
+  <div class="k-app-shell k-py-8" role="status">
+    <p class="k-m-0 k-font-size-lg">Recipe not found.</p>
+    <p class="k-m-0 k-mt-2 k-color-subtle">Check the address or return to the recipe list.</p>
+  </div>
 }

@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+/* Recipe Box — Kendo design tokens (theme-default + overrides) */
+:root {
+  --kendo-font-family-sans: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --kendo-font-family-serif: Merriweather, Georgia, 'Times New Roman', serif;
+  --kendo-color-app-surface: #fff8f4;
+  --kendo-color-on-app-surface: #2b211d;
+  --kendo-color-subtle: #6d5c56;
+  --kendo-color-primary: #c65d4a;
+  --kendo-color-primary-hover: #b85240;
+  --kendo-color-primary-active: #a94434;
+  --kendo-color-on-primary: #ffffff;
+  --kendo-color-secondary: #6e8b6b;
+  --kendo-color-on-secondary: #ffffff;
+  --kendo-color-border: #c4b8b0;
+  --kendo-color-error: #b64a3c;
+  --kendo-color-on-error: #ffffff;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: var(--kendo-body-bg);
+  color: var(--kendo-body-text);
+  font-family: var(--kendo-font-family-sans);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(*, *::before, *::after) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Reusable shell: responsive horizontal padding + max content width */
+.k-app-shell {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: clamp(var(--kendo-spacing-4, 0.5rem), 4vw, var(--kendo-spacing-8, 1rem));
+}
+
+/* Visually hidden helper for accessibility text companions */
+.k-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

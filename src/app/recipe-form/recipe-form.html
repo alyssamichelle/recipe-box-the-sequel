@@ -1,16 +1,61 @@
-<h1>Add a recipe</h1>
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="outline">
-    <mat-label>Name</mat-label>
-    <input matInput formControlName="name" />
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Description</mat-label>
-    <textarea matInput formControlName="description" rows="3"></textarea>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Image URL</mat-label>
-    <input matInput formControlName="imgUrl" type="url" />
-  </mat-form-field>
-  <button mat-flat-button color="primary" type="submit">Save</button>
-</form>
+<section class="k-app-shell k-py-6 k-d-flex k-flex-col k-gap-6" aria-labelledby="add-recipe-title">
+  <h1 id="add-recipe-title" class="k-h2 k-m-0 k-font-weight-bold">Add a recipe</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="k-d-flex k-flex-col k-gap-4 k-w-full">
+    @if (form.touched && form.invalid) {
+      <div role="alert" class="k-p-3 k-rounded-md k-border k-color-error">
+        <p class="k-m-0 k-font-weight-medium">Please complete all fields correctly.</p>
+        <p class="k-m-0 k-mt-1 k-font-size-sm">
+          Image URL must start with http:// or https://
+        </p>
+      </div>
+    }
+
+    <div class="k-d-flex k-flex-col k-gap-1">
+      <kendo-label
+        [for]="nameTb"
+        text="Recipe name"
+        [optional]="false"
+        class="k-display-block"
+      ></kendo-label>
+      <kendo-textbox
+        #nameTb
+        formControlName="name"
+        size="medium"
+        placeholder="e.g. Mushroom risotto"
+        [showErrorIcon]="'initial'"
+        autocomplete="off"
+      ></kendo-textbox>
+    </div>
+
+    <div class="k-d-flex k-flex-col k-gap-1">
+      <kendo-label [for]="descTa" text="Description" [optional]="false" class="k-display-block"></kendo-label>
+      <kendo-textarea
+        #descTa
+        formControlName="description"
+        size="medium"
+        [rows]="4"
+        placeholder="Short summary of the dish"
+      ></kendo-textarea>
+    </div>
+
+    <div class="k-d-flex k-flex-col k-gap-1">
+      <kendo-label [for]="imgTb" text="Image URL" [optional]="false" class="k-display-block"></kendo-label>
+      <kendo-textbox
+        #imgTb
+        formControlName="imgUrl"
+        size="medium"
+        placeholder="https://example.com/photo.jpg"
+        [showErrorIcon]="'initial'"
+        [inputAttributes]="{ type: 'url', autocomplete: 'off' }"
+      ></kendo-textbox>
+    </div>
+
+    <div class="k-d-flex k-flex-wrap k-gap-2">
+      <button kendoButton themeColor="primary" size="medium" type="submit">Save recipe</button>
+      <button kendoButton fillMode="outline" size="medium" type="button" routerLink="/recipes">
+        Cancel
+      </button>
+    </div>
+  </form>
+</section>

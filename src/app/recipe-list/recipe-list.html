@@ -1,31 +1,94 @@
-<mat-toolbar color="primary">
-  <span>{{ appTitle() }}</span>
-  <span class="toolbar-spacer"></span>
-  <a mat-button routerLink="/recipes/new">Add recipe</a>
-</mat-toolbar>
+<kendo-appbar position="top" themeColor="primary">
+  <kendo-appbar-section class="k-d-flex k-align-items-center k-gap-sm k-min-w-0">
+    <kendo-svgicon [icon]="icons.book" aria-hidden="true" />
+    <span class="k-font-size-xl k-m-0 k-font-weight-bold k-text-on-primary k-text-ellipsis">{{ appTitle() }}</span>
+  </kendo-appbar-section>
+  <kendo-appbar-spacer></kendo-appbar-spacer>
+  <kendo-appbar-section>
+    <button
+      kendoButton
+      fillMode="solid"
+      themeColor="base"
+      size="medium"
+      type="button"
+      routerLink="/recipes/new"
+    >
+      <kendo-svgicon [icon]="icons.plus" aria-hidden="true" />
+      Add recipe
+    </button>
+  </kendo-appbar-section>
+</kendo-appbar>
 
-<main class="list-page">
-  <label class="search-label" for="recipe-search">Search recipes</label>
-  <input
-    id="recipe-search"
-    class="search-input"
-    type="search"
-    name="recipeSearch"
-    autocomplete="off"
-    [ngModel]="searchTerm()"
-    (ngModelChange)="searchTerm.set($event)"
-  />
+<section class="k-app-shell k-py-6 k-d-flex k-flex-col k-gap-6" aria-labelledby="recipe-list-heading">
+  <h1 id="recipe-list-heading" class="k-sr-only">Browse recipes</h1>
 
-  <ul class="recipe-links">
-    @for (recipe of filteredRecipes(); track recipe.id) {
-      <li>
-        <a [routerLink]="['/recipes', recipe.id]">
-          {{ recipe.name }}
-          @if (recipe.isFavorite) {
-            <span class="favorite-star" aria-label="Favorite">★</span>
-          }
-        </a>
-      </li>
-    }
-  </ul>
-</main>
+  <kendo-floatinglabel text="Search recipes" labelCssClass="k-mb-2">
+    <kendo-textbox
+      name="recipeSearch"
+      size="medium"
+      [clearButton]="true"
+      placeholder="Name or description"
+      [ngModel]="searchTerm()"
+      (ngModelChange)="searchTerm.set($event)"
+      [inputAttributes]="{ type: 'search', autocomplete: 'off' }"
+    >
+      <ng-template kendoTextBoxPrefixTemplate>
+        <kendo-svgicon [icon]="icons.search" aria-hidden="true" />
+      </ng-template>
+    </kendo-textbox>
+  </kendo-floatinglabel>
+
+  @if (filteredRecipes().length === 0) {
+    <div
+      class="k-d-flex k-flex-col k-align-items-center k-justify-content-center k-p-8 k-rounded-md k-border k-text-center"
+      role="status"
+    >
+      <p class="k-m-0 k-font-size-lg k-font-weight-medium">No recipes match your search.</p>
+      <p class="k-m-0 k-mt-2 k-color-subtle">Try a different term or clear the search field.</p>
+    </div>
+  } @else {
+    <div role="list" aria-label="Matching recipes">
+      <kendo-stacklayout class="k-w-full" gap="24" orientation="vertical">
+        @for (dataItem of filteredRecipes(); track dataItem.id) {
+          <div role="listitem">
+            <kendo-card width="100%">
+              <kendo-card-body class="k-p-md">
+                <kendo-stacklayout orientation="vertical" gap="16" class="k-w-full k-min-w-0">
+                  <div class="k-d-flex k-justify-content-between k-align-items-start k-gap-md k-flex-wrap k-w-full">
+                    <div class="k-d-flex k-flex-col k-gap-1 k-min-w-0">
+                      <h2 kendoCardTitle class="k-h5 k-m-0 k-font-weight-semibold k-text-ellipsis">
+                        {{ dataItem.name }}
+                      </h2>
+                      <p kendoCardSubtitle class="k-m-0 k-color-subtle k-font-size-sm">
+                        {{ dataItem.description }}
+                      </p>
+                    </div>
+                    @if (dataItem.isFavorite) {
+                      <span class="k-d-inline-flex k-align-items-center k-gap-xs k-color-primary">
+                        <kendo-svgicon [icon]="icons.star" aria-hidden="true" />
+                        <span class="k-font-size-sm k-font-weight-medium">Favorite</span>
+                      </span>
+                    }
+                  </div>
+                  <div class="k-d-flex k-justify-content-end">
+                    <button
+                      kendoButton
+                      fillMode="outline"
+                      themeColor="primary"
+                      size="medium"
+                      type="button"
+                      [routerLink]="['/recipes', dataItem.id]"
+                      [attr.aria-label]="'Open recipe: ' + dataItem.name"
+                    >
+                      View recipe
+                    </button>
+                  </div>
+                </kendo-stacklayout>
+              </kendo-card-body>
+            </kendo-card>
+          </div>
+        }
+      </kendo-stacklayout>
+    </div>
+  }
+</section>

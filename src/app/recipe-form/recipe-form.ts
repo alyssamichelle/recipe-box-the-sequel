@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { Router, RouterLink } from '@angular/router';
+import { KENDO_BUTTONS } from '@progress/kendo-angular-buttons';
+import { KENDO_INPUTS } from '@progress/kendo-angular-inputs';
+import { KENDO_LABELS } from '@progress/kendo-angular-label';
 import { RecipeService } from '../recipe';
 
 @Component({
   selector: 'app-recipe-form',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [ReactiveFormsModule, RouterLink, KENDO_INPUTS, KENDO_LABELS, KENDO_BUTTONS],
   templateUrl: './recipe-form.html',
   styleUrl: './recipe-form.css',
 })
@@ -21,7 +21,7 @@ export class RecipeForm {
   protected readonly form = this.fb.nonNullable.group({
     name: ['', Validators.required],
     description: ['', Validators.required],
-    imgUrl: ['', Validators.required],
+    imgUrl: ['', [Validators.required, Validators.pattern(/^https?:\/\/.+/)]],
   });
 
   protected onSubmit(): void {
