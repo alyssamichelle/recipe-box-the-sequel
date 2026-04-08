@@ -49,14 +49,16 @@
             </button>
           </div>
 
-          <h2 class="k-h5 k-m-0 k-font-weight-semibold">Ingredients</h2>
-          <ul class="k-m-0 k-pl-6 k-d-flex k-flex-col k-gap-2">
-            @for (ingredient of adjustedIngredients(); track $index) {
-              <li class="recipe-ingredient-line">
-                {{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}
-              </li>
-            }
-          </ul>
+          <div class="k-d-flex k-flex-col k-gap-8">
+            <h2 class="k-h5 k-m-0 k-font-weight-semibold">Ingredients</h2>
+            <ul class="k-m-0 k-pl-6 k-d-flex k-flex-col k-gap-2">
+              @for (ingredient of adjustedIngredients(); track $index) {
+                <li class="recipe-ingredient-line">
+                  {{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}
+                </li>
+              }
+            </ul>
+          </div>
         </kendo-stacklayout>
       </kendo-card-body>
     </kendo-card>

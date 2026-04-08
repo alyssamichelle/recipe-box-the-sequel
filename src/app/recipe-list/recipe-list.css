@@ -2,3 +2,34 @@
 :host {
   display: block;
 }
+
+/* App bar CTA: match title (white, bold) instead of default chrome */
+button.recipe-appbar-add.k-button {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  color: var(--kendo-color-on-primary);
+  font-weight: 700;
+}
+
+button.recipe-appbar-add.k-button:hover,
+button.recipe-appbar-add.k-button.k-hover {
+  background-color: color-mix(in srgb, var(--kendo-color-on-primary) 16%, transparent);
+  border: none;
+  box-shadow: none;
+  color: var(--kendo-color-on-primary);
+}
+
+button.recipe-appbar-add.k-button:active,
+button.recipe-appbar-add.k-button.k-active {
+  background-color: color-mix(in srgb, var(--kendo-color-on-primary) 26%, transparent);
+  border: none;
+  box-shadow: none;
+  color: var(--kendo-color-on-primary);
+}
+
+button.recipe-appbar-add.k-button:focus-visible,
+button.recipe-appbar-add.k-button.k-focus {
+  outline: 2px solid var(--kendo-color-on-primary);
+  outline-offset: 2px;
+}
