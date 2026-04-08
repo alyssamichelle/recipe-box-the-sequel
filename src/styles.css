@@ -1,19 +1,105 @@
-/* Recipe Box — Kendo design tokens (theme-default + overrides) */
+/* Recipe Box — “Fresh salad” theme (kendo-theme-default + token overrides) */
+
 :root {
-  --kendo-font-family-sans: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --kendo-font-family-serif: Merriweather, Georgia, 'Times New Roman', serif;
-  --kendo-color-app-surface: #fff8f4;
-  --kendo-color-on-app-surface: #2b211d;
-  --kendo-color-subtle: #6d5c56;
-  --kendo-color-primary: #c65d4a;
-  --kendo-color-primary-hover: #b85240;
-  --kendo-color-primary-active: #a94434;
+  /* Typography: large, readable defaults */
+  --kendo-font-family-sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --kendo-font-family-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --kendo-font-family-sans-serif: var(--kendo-font-family-sans);
+  --kendo-font-size-xxxs: 0.625rem;
+  --kendo-font-size-xxs: 0.875rem;
+  --kendo-font-size-xs: 0.9375rem;
+  --kendo-font-size-sm: 1.0625rem;
+  --kendo-font-size-md: 1.1875rem;
+  --kendo-font-size-lg: 1.375rem;
+  --kendo-font-size-xl: 1.625rem;
+  --kendo-line-height-xs: 1.45;
+  --kendo-line-height-sm: 1.55;
+  --kendo-line-height-md: 1.65;
+  --kendo-line-height-lg: 1.75;
+
+  /* Spacing: chunkier rhythm (~25% above default scale) */
+  --kendo-spacing-1: 0.1875rem;
+  --kendo-spacing-2: 0.375rem;
+  --kendo-spacing-3: 0.5625rem;
+  --kendo-spacing-4: 0.75rem;
+  --kendo-spacing-5: 1rem;
+  --kendo-spacing-6: 1.25rem;
+  --kendo-spacing-7: 1.5rem;
+  --kendo-spacing-8: 1.75rem;
+  --kendo-spacing-9: 2rem;
+  --kendo-spacing-10: 2.25rem;
+  --kendo-spacing-11: 2.5rem;
+  --kendo-spacing-12: 2.75rem;
+  --kendo-spacing-13: 3rem;
+  --kendo-spacing-14: 3.25rem;
+  --kendo-spacing-15: 3.5rem;
+  --kendo-spacing-16: 3.75rem;
+
+  /* Radii: softer, chunkier controls */
+  --kendo-border-radius-sm: 0.5rem;
+  --kendo-border-radius-md: 0.625rem;
+  --kendo-border-radius-lg: 0.875rem;
+  --kendo-border-radius-xl: 1.125rem;
+  --kendo-border-radius-xxl: 1.375rem;
+
+  /* Surfaces — cream + lettuce */
+  --kendo-color-app-surface: #f1f5ef;
+  --kendo-color-on-app-surface: #1a2e1f;
+  --kendo-color-subtle: #4d6b52;
+  --kendo-color-surface: #fafdf7;
+  --kendo-color-surface-alt: #e8f0e4;
+  --kendo-color-on-surface: #1a2e1f;
+  --kendo-color-on-surface-alt: #2a4530;
+  --kendo-color-border: #a8bfac;
+  --kendo-color-border-alt: #8fa894;
+
+  /* Primary — fresh green */
+  --kendo-color-primary: #2f8f4e;
+  --kendo-color-primary-hover: #277a42;
+  --kendo-color-primary-active: #1f6637;
+  --kendo-color-primary-subtle: #d4efd9;
+  --kendo-color-primary-subtle-hover: #c4e7cb;
+  --kendo-color-primary-subtle-active: #b3debc;
   --kendo-color-on-primary: #ffffff;
-  --kendo-color-secondary: #6e8b6b;
+  --kendo-color-primary-emphasis: #267d44;
+  --kendo-color-primary-on-subtle: #1e4d2e;
+  --kendo-color-primary-on-surface: #2a7a45;
+
+  /* Secondary — sage */
+  --kendo-color-secondary: #6d9274;
+  --kendo-color-secondary-hover: #5f8266;
+  --kendo-color-secondary-active: #517058;
+  --kendo-color-secondary-subtle: #e2eee3;
   --kendo-color-on-secondary: #ffffff;
-  --kendo-color-border: #c4b8b0;
-  --kendo-color-error: #b64a3c;
+
+  /* Base — neutral chrome */
+  --kendo-color-base: #dde8db;
+  --kendo-color-base-hover: #d0dfcd;
+  --kendo-color-base-active: #c3d5bf;
+  --kendo-color-base-subtle: #eef4ec;
+  --kendo-color-on-base: #1a2e1f;
+
+  /* Tertiary — cucumber */
+  --kendo-color-tertiary: #5a8f6a;
+  --kendo-color-tertiary-hover: #4e7d5d;
+  --kendo-color-on-tertiary: #ffffff;
+
+  /* Semantic */
+  --kendo-color-success: #3a7d45;
+  --kendo-color-on-success: #ffffff;
+  --kendo-color-warning: #b8862a;
+  --kendo-color-on-warning: #1a1a1a;
+  --kendo-color-error: #b5483e;
   --kendo-color-on-error: #ffffff;
+  --kendo-color-info: #2f7d6a;
+  --kendo-color-on-info: #ffffff;
+
+  --kendo-body-bg: var(--kendo-color-app-surface);
+  --kendo-body-text: var(--kendo-color-on-app-surface);
+}
+
+html {
+  font-size: 112.5%;
 }
 
 html,
@@ -23,6 +109,7 @@ body {
   background-color: var(--kendo-body-bg);
   color: var(--kendo-body-text);
   font-family: var(--kendo-font-family-sans);
+  line-height: var(--kendo-line-height-md);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -33,27 +120,26 @@ body {
   }
 }
 
-/* Recipe list: empty floating label must sit past TextBox prefix (search SVG icon) */
+/* Recipe list search: label clears prefix icon; larger type needs more inset */
 .recipe-list-search-field .k-floating-label-container.k-empty > .k-floating-label {
   inset-inline-start: 1.4rem;
 }
 
 .recipe-list-search-field .k-floating-label-container.k-focus > .k-floating-label {
   color: var(--kendo-color-subtle);
-  font-size: 10px;
-  transition: font-size .8s cubic-bezier(0.075, 0.82, 0.165, 1), color 0.2s ease-in-out;
+  font-size: var(--kendo-font-size-xxxs);
+  transition: font-size .8s cubic-bezier(0.075, 0.82, 0.165, 1), color 0.2s ease-in-out, transform 3s ease-in-out;
 }
 
-/* Reusable shell: responsive horizontal padding + max content width */
+/* Reusable shell — extra breathing room */
 .k-app-shell {
   box-sizing: border-box;
   width: 100%;
   max-width: 1440px;
   margin-inline: auto;
-  padding-inline: clamp(var(--kendo-spacing-4, 0.5rem), 4vw, var(--kendo-spacing-8, 1rem));
+  padding-inline: clamp(var(--kendo-spacing-6), 5vw, var(--kendo-spacing-12));
 }
 
-/* Visually hidden helper for accessibility text companions */
 .k-sr-only {
   position: absolute;
   width: 1px;
