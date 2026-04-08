@@ -5,7 +5,6 @@
   --kendo-font-family-sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --kendo-font-family-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
   --kendo-font-family-sans-serif: var(--kendo-font-family-sans);
-  --kendo-font-size-xxxs: 0.625rem;
   --kendo-font-size-xxs: 0.875rem;
   --kendo-font-size-xs: 0.9375rem;
   --kendo-font-size-sm: 1.0625rem;
@@ -120,15 +119,27 @@ body {
   }
 }
 
-/* Recipe list search: label clears prefix icon; larger type needs more inset */
-.recipe-list-search-field .k-floating-label-container.k-empty > .k-floating-label {
+/*
+ * Recipe list search floating label:
+ * Large TextBox uses --kendo-font-size-lg / --kendo-line-height-lg for input + placeholder.
+ * Match that while empty + unfocused; shrink when floated (focus or value).
+ */
+.recipe-list-search-field .k-floating-label-container.k-empty:not(.k-focus) > .k-floating-label {
   inset-inline-start: 1.4rem;
+  font-size: var(--kendo-font-size-lg);
+  line-height: var(--kendo-line-height-lg);
+  font-family: var(--kendo-font-family-sans);
 }
 
-.recipe-list-search-field .k-floating-label-container.k-focus > .k-floating-label {
+.recipe-list-search-field .k-floating-label-container.k-focus > .k-floating-label,
+.recipe-list-search-field .k-floating-label-container:not(.k-empty) > .k-floating-label {
+  font-size: var(--kendo-font-size-xxs);
+  line-height: var(--kendo-line-height-xxs);
   color: var(--kendo-color-subtle);
-  font-size: var(--kendo-font-size-xxxs);
-  transition: font-size .8s cubic-bezier(0.075, 0.82, 0.165, 1), color 0.2s ease-in-out, transform 3s ease-in-out;
+  transition:
+    font-size 0.8s cubic-bezier(0.075, 0.82, 0.165, 1),
+    line-height 0.8s cubic-bezier(0.075, 0.82, 0.165, 1),
+    color 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 /* Reusable shell — extra breathing room */
