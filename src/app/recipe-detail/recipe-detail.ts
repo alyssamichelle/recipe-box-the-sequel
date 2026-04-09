@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { Component, input, signal } from '@angular/core';
+import { Component, computed, input, signal } from '@angular/core';
 
 import { Ingredient, RecipeModel } from '../models';
 
@@ -14,16 +14,15 @@ export class RecipeDetail {
 
   protected readonly servings = signal<number>(1);
 
-  // Demo: `computed` version kept below for reference — template uses `adjustedIngredientsDemo()` for now.
-  // protected readonly adjustedIngredients = computed<Ingredient[]>(() => {
-  //   const current = this.recipe();
-  //   const factor = this.servings() / 4;
-  //   return current.ingredients.map((ing) => ({
-  //     name: ing.name,
-  //     unit: ing.unit,
-  //     quantity: Math.round(ing.quantity * factor * 1000) / 1000,
-  //   }));
-  // });
+  protected readonly adjustedIngredients = computed<Ingredient[]>(() => {
+    const current = this.recipe();
+    const factor = this.servings() / 4;
+    return current.ingredients.map((ing) => ({
+      name: ing.name,
+      unit: ing.unit,
+      quantity: Math.round(ing.quantity * factor * 1000) / 1000,
+    }));
+  });
 
   protected incrementServings(): void {
     this.servings.update((s) => s + 1);
