@@ -2,7 +2,7 @@
 
 ## Intro
 
-Last section we talked about showing data — interpolation, the UI reflecting what’s on your component.
+Last section we talked about showing data — interpolation, the UI reflecting values in your component class.
 
 Now we flip direction.
 
