@@ -1,31 +1,11 @@
 import { Component } from '@angular/core';
 
+import { RecipeList } from './recipe-list/recipe-list';
+
 @Component({
   selector: 'app-root',
+  imports: [RecipeList],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
-export class App {
-  protected readonly title = 'Recipe Box';
-  showMessage = false;
-
-  recipes = [
-    { id: 1, name: 'Tacos', isFavorite: false },
-    { id: 2, name: 'Pasta', isFavorite: false },
-    { id: 3, name: 'Cookies', isFavorite: true }
-  ];
-
-  addRecipe() {
-    this.recipes.push({
-      id: Date.now(),
-      name: 'New Recipe',
-      isFavorite: false
-    });
-  }
-
-  showFavorites = false;
-
-  toggleFavorites() {
-    this.showFavorites = !this.showFavorites;
-  }
-}
+export class App {}
