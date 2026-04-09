@@ -1,13 +1,13 @@
-<section>
-  <h2>{{ recipe().name }}</h2>
-  <p>{{ recipe().description }}</p>
+<section class="recipe-detail">
+  <h2 class="recipe-detail__name">{{ recipe().name }}</h2>
+  <p class="recipe-detail__description">{{ recipe().description }}</p>
   <!-- <img [src]="recipe().imgUrl" [attr.alt]="'Photo of ' + recipe().name" width="300" height="200" /> -->
 
-  <div>
+  <div class="recipe-detail__controls">
     <button type="button" (click)="decrementServings()">Fewer servings</button>
     <span>Servings: {{ servings() }}</span>
     <button type="button" (click)="incrementServings()">More servings</button>
   </div>
 
-  <pre>{{ adjustedIngredients() | json }}</pre>
+  <pre class="recipe-detail__ingredients">{{ adjustedIngredients() | json }}</pre>
 </section>
