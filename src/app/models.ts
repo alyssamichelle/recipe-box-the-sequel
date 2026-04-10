@@ -10,4 +10,5 @@ export interface RecipeModel {
   description: string;
   imgUrl: string;
   ingredients: Ingredient[];
+  instructions: string[];
 }

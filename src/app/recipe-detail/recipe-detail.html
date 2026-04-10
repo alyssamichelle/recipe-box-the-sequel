@@ -25,6 +25,5 @@
   </div>
 
   <pre class="recipe-detail__ingredients">{{ adjustedIngredients() | json }}</pre>
-  <!-- <p class="recipe-detail__ingredients"><strong>Ingredients:</strong> {{ ingredientsLine() }}</p> -->
-
+  <pre class="recipe-detail__instructions">{{ recipe().instructions.join('\n\n') }}</pre>
 </section>

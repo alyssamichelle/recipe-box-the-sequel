@@ -69,7 +69,8 @@
   font-size: 0.875rem;
 }
 
-.recipe-detail__ingredients {
+.recipe-detail__ingredients,
+.recipe-detail__instructions {
   margin: 0;
   padding: 1rem;
   border-radius: 0.375rem;

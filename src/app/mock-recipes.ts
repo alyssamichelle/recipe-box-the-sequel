@@ -13,6 +13,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Pecorino Romano Cheese', quantity: 50, unit: 'g' },
       { name: 'Black Pepper', quantity: 1, unit: 'tsp' },
     ],
+    instructions: [
+      'Bring a large pot of salted water to a boil and cook spaghetti until al dente. Reserve about 250 ml pasta water before draining.',
+      'Dice guanciale and cook in a cold skillet over medium heat until crisp and the fat has rendered.',
+      'Whisk egg yolks with grated pecorino, black pepper, and a splash of reserved pasta water until creamy.',
+      'Off the heat, toss hot pasta with guanciale and its fat, then quickly mix in the egg mixture, adding pasta water as needed for a silky sauce.',
+      'Serve immediately with extra pecorino and cracked black pepper.',
+    ],
   },
   {
     id: 2,
@@ -24,6 +31,12 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Fresh Mozzarella', quantity: 200, unit: 'g' },
       { name: 'Fresh Basil', quantity: 1, unit: 'bunch' },
       { name: 'Extra Virgin Olive Oil', quantity: 2, unit: 'tbsp' },
+    ],
+    instructions: [
+      'Slice tomatoes and mozzarella into even rounds about 6 mm thick.',
+      'On a platter, alternate tomato, mozzarella, and basil leaves, slightly overlapping.',
+      'Drizzle with olive oil and season lightly with salt and freshly ground pepper.',
+      'Let stand 5 minutes at room temperature so flavors meld before serving.',
     ],
   },
   {
@@ -38,6 +51,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Heavy Cream', quantity: 100, unit: 'ml' },
       { name: 'Garam Masala', quantity: 2, unit: 'tsp' },
     ],
+    instructions: [
+      'Cut chicken into bite-sized pieces and marinate in yogurt and half the garam masala for at least 30 minutes (or overnight).',
+      'Sear chicken in a hot pan until browned and cooked through; set aside.',
+      'Simmer passata in the same pan 10–15 minutes, scraping up browned bits.',
+      'Stir in cream, remaining garam masala, and chicken; simmer gently 5 minutes until heated through.',
+      'Adjust salt and serve with rice or naan.',
+    ],
   },
   {
     id: 4,
@@ -50,6 +70,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Onion', quantity: 1, unit: 'each' },
       { name: 'Cheddar Cheese', quantity: 100, unit: 'g' },
       { name: 'Taco Seasoning', quantity: 2, unit: 'tbsp' },
+    ],
+    instructions: [
+      'Dice onion finely. Brown ground beef in a large skillet over medium-high heat, breaking it up as it cooks.',
+      'Drain excess fat if needed, then add onion and cook until softened.',
+      'Stir in taco seasoning with a splash of water; simmer 2–3 minutes until saucy.',
+      'Warm tortillas in a dry pan or microwave until pliable.',
+      'Fill tortillas with beef, top with grated cheese, and add your favorite salsa or toppings.',
     ],
   },
   {
@@ -64,6 +91,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Fresh Ginger', quantity: 1, unit: 'tbsp' },
       { name: 'Sesame Oil', quantity: 1, unit: 'tsp' },
     ],
+    instructions: [
+      'Cut broccoli into florets and peppers into strips. Mince or grate ginger.',
+      'Heat a wok or large skillet over high heat until very hot; add a thin film of neutral oil.',
+      'Stir-fry broccoli 2 minutes, then add peppers and ginger; cook until crisp-tender.',
+      'Add soy sauce and toss; finish with sesame oil off the heat.',
+      'Serve immediately over rice if desired.',
+    ],
   },
   {
     id: 6,
@@ -76,6 +110,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Fresh Mozzarella', quantity: 250, unit: 'g' },
       { name: 'Fresh Basil', quantity: 0.5, unit: 'bunch' },
       { name: 'Olive Oil', quantity: 1, unit: 'tbsp' },
+    ],
+    instructions: [
+      'Preheat oven as hot as possible (250–290 °C) with a pizza stone or steel if you have one.',
+      'Stretch dough into a thin round and place on a peel or parchment-lined tray.',
+      'Spread crushed tomatoes, drizzle olive oil, and add torn mozzarella.',
+      'Bake until crust is blistered and cheese bubbles, about 8–12 minutes.',
+      'Top with fresh basil leaves and a drizzle of oil before slicing.',
     ],
   },
   {
@@ -90,6 +131,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Gruyère Cheese', quantity: 150, unit: 'g' },
       { name: 'Baguette', quantity: 0.5, unit: 'each' },
     ],
+    instructions: [
+      'Halve and thinly slice onions. Melt butter in a heavy pot over medium-low heat.',
+      'Cook onions slowly 35–45 minutes, stirring often, until deep golden (add splash of water if sticking).',
+      'Add beef stock, bring to a simmer, and cook 15–20 minutes. Season to taste.',
+      'Toast baguette slices. Ladle soup into ovenproof bowls, top with bread and grated Gruyère.',
+      'Broil until cheese is bubbly and browned.',
+    ],
   },
   {
     id: 8,
@@ -102,6 +150,12 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Fresh Dill', quantity: 2, unit: 'tbsp' },
       { name: 'Olive Oil', quantity: 2, unit: 'tbsp' },
       { name: 'Salt', quantity: 0.5, unit: 'tsp' },
+    ],
+    instructions: [
+      'Preheat oven to 200 °C. Pat salmon dry and place skin-side down on an oiled baking sheet.',
+      'Drizzle with olive oil, lemon juice, salt, and chopped dill.',
+      'Bake 12–15 minutes until fish flakes easily and center is just opaque.',
+      'Garnish with dill sprigs and lemon wedges.',
     ],
   },
   {
@@ -116,6 +170,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'White Wine', quantity: 125, unit: 'ml' },
       { name: 'Parmesan Cheese', quantity: 50, unit: 'g' },
     ],
+    instructions: [
+      'Keep stock simmering in a separate pan. Sauté sliced mushrooms in butter until golden; set aside.',
+      'Toast rice in the same pan 1–2 minutes, then add wine and stir until absorbed.',
+      'Add stock one ladle at a time, stirring often, until rice is creamy and al dente (about 18–22 minutes).',
+      'Fold in mushrooms and grated Parmesan. Rest 2 minutes off heat.',
+      'Serve with extra Parmesan and black pepper.',
+    ],
   },
   {
     id: 10,
@@ -128,6 +189,12 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Feta Cheese', quantity: 150, unit: 'g' },
       { name: 'Kalamata Olives', quantity: 100, unit: 'g' },
       { name: 'Red Wine Vinegar', quantity: 2, unit: 'tbsp' },
+    ],
+    instructions: [
+      'Chop cucumber and tomatoes into chunks; combine in a large bowl.',
+      'Add olives, cubed or crumbled feta, and a generous drizzle of olive oil and red wine vinegar.',
+      'Toss gently, season with oregano, salt, and pepper.',
+      'Serve chilled or at room temperature.',
     ],
   },
   {
@@ -142,6 +209,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Bean Sprouts', quantity: 100, unit: 'g' },
       { name: 'Roasted Peanuts', quantity: 50, unit: 'g' },
     ],
+    instructions: [
+      'Soak rice noodles in warm water until pliable but not mushy; drain.',
+      'Whisk tamarind with a little warm water and soy sauce or salt to taste for the sauce.',
+      'Stir-fry shrimp in a hot wok until pink; push aside and scramble an egg if desired.',
+      'Add noodles and sauce; toss until coated. Fold in bean sprouts.',
+      'Top with crushed peanuts, lime wedges, and extra sprouts.',
+    ],
   },
   {
     id: 12,
@@ -154,6 +228,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Pearl Onions', quantity: 200, unit: 'g' },
       { name: 'Carrots', quantity: 3, unit: 'each' },
       { name: 'Button Mushrooms', quantity: 250, unit: 'g' },
+    ],
+    instructions: [
+      'Cut beef into large cubes; pat dry and brown in batches in a Dutch oven. Set aside.',
+      'Deglaze with red wine, scraping the pan. Return beef, add stock to nearly cover, and bring to a simmer.',
+      'Cover and braise at 160 °C for 2–2.5 hours until fork-tender.',
+      'Sauté pearl onions, carrots, and mushrooms separately; add to the stew for the last 30 minutes.',
+      'Reduce sauce if needed; season and serve with crusty bread or mashed potatoes.',
     ],
   },
   {
@@ -168,6 +249,12 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Cumin', quantity: 1, unit: 'tsp' },
       { name: 'Feta Cheese', quantity: 80, unit: 'g' },
     ],
+    instructions: [
+      'Sauté diced peppers in olive oil until soft. Add garlic, cumin, and paprika if you like; cook 1 minute.',
+      'Pour in crushed tomatoes; simmer 10–15 minutes until slightly thickened. Season well.',
+      'Make wells in the sauce and crack in eggs. Cover and cook on low until whites are set and yolks are to your liking.',
+      'Crumble feta on top and serve with bread for dipping.',
+    ],
   },
   {
     id: 14,
@@ -180,6 +267,12 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Parmesan', quantity: 50, unit: 'g' },
       { name: 'Caesar Dressing', quantity: 80, unit: 'ml' },
       { name: 'Croutons', quantity: 100, unit: 'g' },
+    ],
+    instructions: [
+      'Season and grill or pan-sear chicken until cooked through (74 °C internal); rest 5 minutes and slice.',
+      'Tear romaine into bite-sized pieces and place in a large bowl.',
+      'Toss with Caesar dressing until lightly coated. Add chicken, croutons, and shaved Parmesan.',
+      'Serve immediately while croutons stay crisp.',
     ],
   },
   {
@@ -194,6 +287,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Marinara Sauce', quantity: 600, unit: 'ml' },
       { name: 'Mozzarella', quantity: 200, unit: 'g' },
     ],
+    instructions: [
+      'Wilt spinach, squeeze dry, and chop. Mix ricotta with spinach, salt, and pepper.',
+      'Spread a thin layer of marinara in a baking dish. Layer noodles, ricotta mixture, sauce, and mozzarella; repeat.',
+      'Finish with sauce and mozzarella on top.',
+      'Cover with foil and bake at 180 °C for 25 minutes; uncover and bake 15–20 minutes until bubbly and golden.',
+      'Rest 15 minutes before slicing.',
+    ],
   },
   {
     id: 16,
@@ -206,6 +306,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Coconut Milk', quantity: 400, unit: 'ml' },
       { name: 'Thai Basil', quantity: 1, unit: 'cup' },
       { name: 'Fish Sauce', quantity: 1, unit: 'tbsp' },
+    ],
+    instructions: [
+      'Slice chicken into strips. Fry curry paste in a little coconut cream until fragrant.',
+      'Add remaining coconut milk and simmer gently.',
+      'Add chicken and cook through. Season with fish sauce and a pinch of sugar if needed.',
+      'Stir in Thai basil leaves just before serving.',
+      'Serve over jasmine rice.',
     ],
   },
   {
@@ -220,6 +327,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Eggs', quantity: 2, unit: 'each' },
       { name: 'Butter', quantity: 80, unit: 'g' },
     ],
+    instructions: [
+      'Preheat oven to 175 °C. Grease a 23 × 13 cm loaf pan.',
+      'Mash bananas; cream softened butter with sugar, then beat in eggs and banana.',
+      'Fold in flour until just combined.',
+      'Pour into the pan and bake 55–65 minutes until a skewer comes out clean.',
+      'Cool in pan 10 minutes, then turn out onto a rack.',
+    ],
   },
   {
     id: 18,
@@ -232,6 +346,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Flour', quantity: 220, unit: 'g' },
       { name: 'Chocolate Chips', quantity: 200, unit: 'g' },
       { name: 'Vanilla Extract', quantity: 1, unit: 'tsp' },
+    ],
+    instructions: [
+      'Preheat oven to 175 °C. Line baking sheets with parchment.',
+      'Cream butter with sugars until light; beat in egg and vanilla.',
+      'Mix in flour and a pinch of salt; fold in chocolate chips.',
+      'Drop rounded tablespoons of dough onto sheets, spacing 5 cm apart.',
+      'Bake 10–12 minutes until edges are golden; cool on sheets 2 minutes before transferring.',
     ],
   },
   {
@@ -246,6 +367,12 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Mixed Berries', quantity: 100, unit: 'g' },
       { name: 'Honey', quantity: 1, unit: 'tbsp' },
     ],
+    instructions: [
+      'In a jar or bowl, combine oats, milk, yogurt, and honey; stir well.',
+      'Cover and refrigerate at least 4 hours or overnight.',
+      'Stir in berries (or add on top) before eating.',
+      'Thin with extra milk if you prefer a looser texture.',
+    ],
   },
   {
     id: 20,
@@ -258,6 +385,12 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Lemon Juice', quantity: 1, unit: 'tbsp' },
       { name: 'Red Pepper Flakes', quantity: 0.5, unit: 'tsp' },
       { name: 'Sea Salt', quantity: 0.25, unit: 'tsp' },
+    ],
+    instructions: [
+      'Toast sourdough until golden and crisp.',
+      'Mash avocado with lemon juice, salt, and pepper to taste.',
+      'Spread generously on toast.',
+      'Sprinkle with red pepper flakes and an extra pinch of flaky salt if you like.',
     ],
   },
   {
@@ -272,6 +405,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Flour', quantity: 200, unit: 'g' },
       { name: 'Vegetable Oil', quantity: 1, unit: 'L' },
     ],
+    instructions: [
+      'Cut potatoes into thick chips; rinse, dry, and fry once at 160 °C until tender; drain.',
+      'Whisk beer with part of the flour and a pinch of salt for batter; let rest 15 minutes.',
+      'Heat oil to 190 °C. Fry chips again until golden and crisp.',
+      'Dust fish in flour, dip in batter, and fry until golden and flaky inside.',
+      'Drain on a rack, season with salt, and serve with malt vinegar or tartar sauce.',
+    ],
   },
   {
     id: 22,
@@ -284,6 +424,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Egg Noodles', quantity: 200, unit: 'g' },
       { name: 'Carrots', quantity: 2, unit: 'each' },
       { name: 'Celery', quantity: 2, unit: 'stalks' },
+    ],
+    instructions: [
+      'Simmer chicken thighs in stock until cooked through, about 25 minutes. Remove, shred meat, and discard bones.',
+      'Dice carrots and celery; add to broth and simmer until tender.',
+      'Return shredded chicken to the pot.',
+      'Cook noodles separately or in the soup until al dente (if in soup, serve promptly to avoid mush).',
+      'Season with salt, pepper, and fresh parsley if you have it.',
     ],
   },
   {
@@ -298,6 +445,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Kale', quantity: 100, unit: 'g' },
       { name: 'Tahini', quantity: 2, unit: 'tbsp' },
     ],
+    instructions: [
+      'Rinse quinoa; cook in salted water until fluffy and tails appear; fluff with a fork.',
+      'Cube sweet potato and toss with oil; roast at 200 °C until caramelized. Warm chickpeas with spices if you like.',
+      'Massage chopped kale with a little oil and lemon until tender.',
+      'Whisk tahini with lemon juice, water, garlic, and salt for dressing.',
+      'Layer quinoa, vegetables, chickpeas, and kale in bowls; drizzle with dressing.',
+    ],
   },
   {
     id: 24,
@@ -310,6 +464,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Mozzarella', quantity: 250, unit: 'g' },
       { name: 'Breadcrumbs', quantity: 150, unit: 'g' },
       { name: 'Eggs', quantity: 2, unit: 'each' },
+    ],
+    instructions: [
+      'Slice eggplant, salt lightly, and rest 20 minutes; pat dry.',
+      'Dip slices in beaten egg, then breadcrumbs; shallow-fry or bake at 200 °C until golden.',
+      'Layer marinara, eggplant, and mozzarella in a baking dish; repeat.',
+      'Bake at 180 °C 25–30 minutes until bubbly.',
+      'Rest briefly before serving.',
     ],
   },
   {
@@ -324,6 +485,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Chili Powder', quantity: 2, unit: 'tbsp' },
       { name: 'Onion', quantity: 1, unit: 'each' },
     ],
+    instructions: [
+      'Dice onion. Brown beef in a large pot; drain fat if desired.',
+      'Add onion and cook until soft. Stir in chili powder and cook 1 minute.',
+      'Add crushed tomatoes, drained beans, and a little water or stock.',
+      'Simmer uncovered 45–60 minutes, stirring occasionally, until thick and flavorful.',
+      'Season with salt; serve with sour cream, cheese, or cornbread.',
+    ],
   },
   {
     id: 26,
@@ -336,6 +504,12 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Bacon', quantity: 100, unit: 'g' },
       { name: 'Hard-Boiled Eggs', quantity: 2, unit: 'each' },
       { name: 'Blue Cheese', quantity: 80, unit: 'g' },
+    ],
+    instructions: [
+      'Cook bacon until crisp; crumble. Slice eggs and chicken.',
+      'Arrange greens on a platter or in wide bowls.',
+      'Place chicken, bacon, egg, avocado (optional), tomato in neat rows on top.',
+      'Crumble blue cheese over all. Drizzle vinaigrette at the table.',
     ],
   },
   {
@@ -350,6 +524,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Eggs', quantity: 2, unit: 'each' },
       { name: 'Milk', quantity: 100, unit: 'ml' },
     ],
+    instructions: [
+      'Whisk ricotta, eggs, milk, and lemon zest until smooth.',
+      'Fold in flour and a pinch of salt until just combined (small lumps are fine).',
+      'Heat a lightly oiled griddle over medium heat.',
+      'Pour 60 ml batter per pancake; cook until bubbles form, flip, and cook until golden.',
+      'Serve with maple syrup and extra zest.',
+    ],
   },
   {
     id: 28,
@@ -362,6 +543,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Vegetable Stock', quantity: 1.2, unit: 'L' },
       { name: 'Soft-Boiled Eggs', quantity: 4, unit: 'each' },
       { name: 'Scallions', quantity: 4, unit: 'each' },
+    ],
+    instructions: [
+      'Bring stock to a simmer. Ladle a little into a bowl and whisk miso until smooth; stir back into the pot (do not boil vigorously).',
+      'Cook noodles according to package; drain and divide among bowls.',
+      'Pour hot broth over noodles.',
+      'Halve soft-boiled eggs and place on top with sliced scallions.',
+      'Add sesame oil or nori if you like.',
     ],
   },
   {
@@ -376,6 +564,13 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Butter', quantity: 80, unit: 'g' },
       { name: 'Cinnamon', quantity: 1, unit: 'tsp' },
     ],
+    instructions: [
+      'Preheat oven to 180 °C. Peel and slice apples; toss with cinnamon and a little sugar; spread in a baking dish.',
+      'Rub cold butter into oats, brown sugar, and a pinch of salt until crumbly.',
+      'Sprinkle topping evenly over apples.',
+      'Bake 35–45 minutes until apples are tender and topping is golden.',
+      'Serve warm with ice cream or whipped cream.',
+    ],
   },
   {
     id: 30,
@@ -389,5 +584,15 @@ export const RECIPES: RecipeModel[] = [
       { name: 'Lemon', quantity: 0.5, unit: 'each' },
       { name: 'Fresh Parsley', quantity: 2, unit: 'tbsp' },
     ],
+    instructions: [
+      'Pat shrimp dry; season lightly with salt and pepper.',
+      'Melt butter in a large skillet over medium-high heat.',
+      'Add minced garlic; cook 30 seconds until fragrant, then add shrimp in a single layer.',
+      'Cook 2 minutes per side until pink and opaque.',
+      'Squeeze lemon juice over, toss with chopped parsley, and serve immediately.',
+    ],
   },
 ];
+
+/** Alias for tests and fixtures that expect this name. */
+export const MOCK_RECIPES = RECIPES;
