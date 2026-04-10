@@ -1,22 +1,51 @@
 import { JsonPipe } from '@angular/common';
-import { Component, computed, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  input,
+  signal,
+  untracked,
+} from '@angular/core';
+import { FormField, form, min } from '@angular/forms/signals';
 
 import { Ingredient, RecipeModel } from '../models';
 
+interface ServingsFormModel {
+  servings: number;
+}
+
 @Component({
   selector: 'app-recipe-detail',
-  imports: [JsonPipe],
+  imports: [JsonPipe, FormField],
   templateUrl: './recipe-detail.html',
   styleUrl: './recipe-detail.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecipeDetail {
   readonly recipe = input.required<RecipeModel>();
 
-  protected readonly servings = signal<number>(1);
+  protected readonly servingsModel = signal<ServingsFormModel>({ servings: 1 });
+
+  protected readonly servingsForm = form(this.servingsModel, (path) => {
+    min(path.servings, 1, { message: 'Servings must be at least 1.' });
+  });
+
+  constructor() {
+    effect(() => {
+      this.recipe();
+      untracked(() => {
+        this.servingsModel.set({ servings: 1 });
+      });
+    });
+  }
 
   protected readonly adjustedIngredients = computed<Ingredient[]>(() => {
     const current = this.recipe();
-    const factor = this.servings() / 4;
+    const raw = this.servingsForm.servings().value();
+    const count = typeof raw === 'number' && !Number.isNaN(raw) ? raw : 1;
+    const factor = count / 4;
     return current.ingredients.map((ing) => ({
       name: ing.name,
       unit: ing.unit,
@@ -25,10 +54,14 @@ export class RecipeDetail {
   });
 
   protected incrementServings(): void {
-    this.servings.update((s) => s + 1);
+    const raw = this.servingsForm.servings().value();
+    const current = typeof raw === 'number' && !Number.isNaN(raw) ? raw : 1;
+    this.servingsForm.servings().value.set(current + 1);
   }
 
   protected decrementServings(): void {
-    this.servings.update((s) => Math.max(1, s - 1));
+    const raw = this.servingsForm.servings().value();
+    const current = typeof raw === 'number' && !Number.isNaN(raw) ? raw : 1;
+    this.servingsForm.servings().value.set(Math.max(1, current - 1));
   }
 }

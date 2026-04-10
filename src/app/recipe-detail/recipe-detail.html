@@ -6,8 +6,23 @@
 
   <div class="recipe-detail__controls">
     <button type="button" (click)="decrementServings()">Fewer servings</button>
-    <span>Servings: {{ servings() }}</span>
+    <label class="recipe-detail__servings" for="recipe-servings">
+      <span class="recipe-detail__servings-text">Servings</span>
+      <input
+        id="recipe-servings"
+        class="recipe-detail__servings-input"
+        type="number"
+        [formField]="servingsForm.servings"
+      />
+    </label>
     <button type="button" (click)="incrementServings()">More servings</button>
+    @if (servingsForm.servings().touched() && servingsForm.servings().invalid()) {
+      <ul class="recipe-detail__errors" role="alert">
+        @for (error of servingsForm.servings().errors(); track error) {
+          <li>{{ error.message }}</li>
+        }
+      </ul>
+    }
   </div>
 
   <pre class="recipe-detail__ingredients">{{ adjustedIngredients() | json }}</pre>

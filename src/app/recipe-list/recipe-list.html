@@ -1,6 +1,22 @@
-<div>
-  <button type="button" (click)="selectCarbonara()">Spaghetti Carbonara</button>
-  <button type="button" (click)="selectCaprese()">Caprese Salad</button>
-</div>
+<section class="recipe-list">
+  <fieldset class="recipe-list__picker">
+    <legend class="recipe-list__legend" id="recipe-list-legend">Recipe</legend>
+    <div class="recipe-list__radios" role="radiogroup" aria-labelledby="recipe-list-legend">
+      @for (r of recipes; track r.id) {
+        <label class="recipe-list__choice">
+          <input type="radio" [value]="'' + r.id" [formField]="pickerForm.recipeId" />
+          {{ r.name }}
+        </label>
+      }
+    </div>
+    @if (pickerForm.recipeId().touched() && pickerForm.recipeId().invalid()) {
+      <ul class="recipe-list__errors" role="alert">
+        @for (error of pickerForm.recipeId().errors(); track error) {
+          <li>{{ error.message }}</li>
+        }
+      </ul>
+    }
+  </fieldset>
 
-<app-recipe-detail [recipe]="recipe()" />
+  <app-recipe-detail [recipe]="recipe()" />
+</section>

@@ -28,8 +28,45 @@
 .recipe-detail__controls {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-end;
   gap: 0.75rem;
+}
+
+.recipe-detail__servings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 5rem;
+}
+
+.recipe-detail__servings-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.recipe-detail__servings-input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.recipe-detail__servings-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.recipe-detail__errors {
+  flex-basis: 100%;
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #b91c1c;
+  font-size: 0.875rem;
 }
 
 .recipe-detail__ingredients {
