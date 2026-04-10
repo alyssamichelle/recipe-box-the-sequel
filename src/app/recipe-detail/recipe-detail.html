@@ -1,7 +1,6 @@
 <section class="recipe-detail">
   <h2 class="recipe-detail__name">{{ recipe().name }}</h2>
   <p class="recipe-detail__description">{{ recipe().description }}</p>
-  <p class="recipe-detail__description">{{ recipe().ingredients.map(ingredient => ingredient.name).join(', ') }}</p>
   <!-- <img [src]="recipe().imgUrl" [attr.alt]="'Photo of ' + recipe().name" width="300" height="200" /> -->
 
   <div class="recipe-detail__controls">
@@ -26,4 +25,6 @@
   </div>
 
   <pre class="recipe-detail__ingredients">{{ adjustedIngredients() | json }}</pre>
+  <!-- <p class="recipe-detail__ingredients"><strong>Ingredients:</strong> {{ ingredientsLine() }}</p> -->
+
 </section>

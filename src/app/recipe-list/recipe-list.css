@@ -27,6 +27,15 @@
   flex-direction: column;
   gap: 0.6rem;
   margin-top: 0.75rem;
+  max-height: 33vh;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e8e8e8;
+  border-radius: 0.375rem;
+  background: #fafafa;
+  -webkit-overflow-scrolling: touch;
 }
 
 .recipe-list__choice {

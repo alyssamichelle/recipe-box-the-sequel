@@ -53,6 +53,13 @@ export class RecipeDetail {
     }));
   });
 
+  /** Plain-text block for the template; newlines become separate rows via `white-space: pre-line`. */
+  protected readonly ingredientsLine = computed(() =>
+    this.adjustedIngredients()
+      .map((i) => `${i.quantity} ${i.unit} ${i.name}`)
+      .join('\n'),
+  );
+
   protected incrementServings(): void {
     const raw = this.servingsForm.servings().value();
     const current = typeof raw === 'number' && !Number.isNaN(raw) ? raw : 1;
