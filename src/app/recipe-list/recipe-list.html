@@ -4,7 +4,12 @@
     <div class="recipe-list__radios" role="radiogroup" aria-labelledby="recipe-list-legend">
       @for (r of recipes; track r.id) {
         <label class="recipe-list__choice">
-          <input type="radio" [value]="'' + r.id" [formField]="pickerForm.recipeId" />
+          <input
+            type="radio"
+            [value]="'' + r.id"
+            [formField]="pickerForm.recipeId"
+            (change)="onRecipeChange()"
+          />
           {{ r.name }}
         </label>
       }

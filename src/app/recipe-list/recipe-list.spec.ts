@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, convertToParamMap, Router } from '@angular/router';
+import { of } from 'rxjs';
 
 import { RecipeList } from './recipe-list';
 
@@ -8,9 +10,18 @@ describe('RecipeList', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RecipeList]
-    })
-    .compileComponents();
+      imports: [RecipeList],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: { paramMap: convertToParamMap({ recipeId: '1' }) },
+            paramMap: of(convertToParamMap({ recipeId: '1' })),
+          },
+        },
+        { provide: Router, useValue: { navigate: vi.fn().mockResolvedValue(true) } },
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RecipeList);
     component = fixture.componentInstance;
