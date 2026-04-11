@@ -7,10 +7,11 @@ import { map } from 'rxjs/operators';
 import { RECIPES } from '../mock-recipes';
 import { RecipeModel } from '../models';
 import { RecipeDetail } from '../recipe-detail/recipe-detail';
+import { defaultRecipeSlug, findRecipeBySlug, slugify } from '../recipe-slug';
 
 interface RecipePickerModel {
-  /** Radio `value` attributes are strings; we normalize when resolving the recipe. */
-  recipeId: string;
+  /** Same string as in the URL segment (`/recipes/:recipeSlug`), e.g. `spaghetti-carbonara`. */
+  recipeSlug: string;
 }
 
 @Component({
@@ -28,52 +29,54 @@ export class RecipeList {
   protected readonly recipes = RECIPES;
 
   protected readonly pickerModel = signal<RecipePickerModel>({
-    recipeId: RecipeList.initialRecipeId(this.route.snapshot.paramMap),
+    recipeSlug: RecipeList.initialRecipeSlug(this.route.snapshot.paramMap),
   });
 
   protected readonly pickerForm = form(this.pickerModel, (path) => {
-    required(path.recipeId, { message: 'Choose a recipe.' });
+    required(path.recipeSlug, { message: 'Choose a recipe.' });
   });
 
-  /** Mirrors `:recipeId` so detail stays in sync with the URL (incl. browser back/forward). */
-  private readonly routeRecipeId = toSignal(
-    this.route.paramMap.pipe(map((pm) => pm.get('recipeId'))),
-    { initialValue: this.route.snapshot.paramMap.get('recipeId') },
+  /** Lets the template bind radio values: one slug per recipe name. */
+  protected readonly slugify = slugify;
+
+  /** Mirrors `:recipeSlug` so detail stays in sync with the URL (incl. browser back/forward). */
+  private readonly routeRecipeSlug = toSignal(
+    this.route.paramMap.pipe(map((pm) => pm.get('recipeSlug'))),
+    { initialValue: this.route.snapshot.paramMap.get('recipeSlug') },
   );
 
   protected readonly recipe = computed<RecipeModel>(() => {
-    const raw = this.routeRecipeId();
-    const id = raw ? Number(raw) : NaN;
-    return RECIPES.find((r) => r.id === id) ?? RECIPES[0];
+    const slug = this.routeRecipeSlug();
+    return findRecipeBySlug(slug) ?? RECIPES[0];
   });
 
   constructor() {
     this.route.paramMap.pipe(takeUntilDestroyed()).subscribe((pm) => {
-      const raw = pm.get('recipeId');
-      if (!raw || !RECIPES.some((r) => r.id === Number(raw))) {
-        void this.router.navigate(['/recipes', RECIPES[0].id], { replaceUrl: true });
+      const slug = pm.get('recipeSlug');
+      if (!slug || !findRecipeBySlug(slug)) {
+        void this.router.navigate(['/recipes', defaultRecipeSlug()], { replaceUrl: true });
         return;
       }
-      if (this.pickerModel().recipeId !== raw) {
-        this.pickerModel.set({ recipeId: raw });
+      if (this.pickerModel().recipeSlug !== slug) {
+        this.pickerModel.set({ recipeSlug: slug });
       }
     });
   }
 
   /** After a radio change, move the browser URL to match (shareable link). */
   protected onRecipeChange(): void {
-    const raw = this.pickerForm.recipeId().value();
-    const fromUrl = this.route.snapshot.paramMap.get('recipeId');
-    if (raw !== fromUrl) {
-      void this.router.navigate(['/recipes', raw]);
+    const slug = this.pickerForm.recipeSlug().value();
+    const fromUrl = this.route.snapshot.paramMap.get('recipeSlug');
+    if (slug !== fromUrl) {
+      void this.router.navigate(['/recipes', slug]);
     }
   }
 
-  private static initialRecipeId(pm: ParamMap): string {
-    const raw = pm.get('recipeId');
-    if (raw && RECIPES.some((r) => r.id === Number(raw))) {
-      return raw;
+  private static initialRecipeSlug(pm: ParamMap): string {
+    const slug = pm.get('recipeSlug');
+    if (slug && findRecipeBySlug(slug)) {
+      return slug;
     }
-    return String(RECIPES[0].id);
+    return defaultRecipeSlug();
   }
 }

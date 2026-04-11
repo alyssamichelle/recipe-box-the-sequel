@@ -6,17 +6,17 @@
         <label class="recipe-list__choice">
           <input
             type="radio"
-            [value]="'' + r.id"
-            [formField]="pickerForm.recipeId"
+            [value]="slugify(r.name)"
+            [formField]="pickerForm.recipeSlug"
             (change)="onRecipeChange()"
           />
           {{ r.name }}
         </label>
       }
     </div>
-    @if (pickerForm.recipeId().touched() && pickerForm.recipeId().invalid()) {
+    @if (pickerForm.recipeSlug().touched() && pickerForm.recipeSlug().invalid()) {
       <ul class="recipe-list__errors" role="alert">
-        @for (error of pickerForm.recipeId().errors(); track error) {
+        @for (error of pickerForm.recipeSlug().errors(); track error) {
           <li>{{ error.message }}</li>
         }
       </ul>

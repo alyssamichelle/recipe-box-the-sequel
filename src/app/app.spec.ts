@@ -3,6 +3,7 @@ import { provideRouter, Router } from '@angular/router';
 
 import { App } from './app';
 import { routes } from './app.routes';
+import { defaultRecipeSlug } from './recipe-slug';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -21,7 +22,7 @@ describe('App', () => {
   it('should render recipe list after navigating to a recipe', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);
-    await router.navigate(['/recipes', '1']);
+    await router.navigate(['/recipes', defaultRecipeSlug()]);
     fixture.detectChanges();
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;

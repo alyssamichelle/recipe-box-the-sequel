@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap, Router } from '@angular/router';
 import { of } from 'rxjs';
 
+import { defaultRecipeSlug } from '../recipe-slug';
 import { RecipeList } from './recipe-list';
 
 describe('RecipeList', () => {
@@ -15,8 +16,8 @@ describe('RecipeList', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            snapshot: { paramMap: convertToParamMap({ recipeId: '1' }) },
-            paramMap: of(convertToParamMap({ recipeId: '1' })),
+            snapshot: { paramMap: convertToParamMap({ recipeSlug: defaultRecipeSlug() }) },
+            paramMap: of(convertToParamMap({ recipeSlug: defaultRecipeSlug() })),
           },
         },
         { provide: Router, useValue: { navigate: vi.fn().mockResolvedValue(true) } },
