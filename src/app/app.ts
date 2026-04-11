@@ -6,5 +6,26 @@ import { Component } from '@angular/core';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = 'Recipe Box';
+  protected readonly title = 'Alyssa\'s Recipe Box';
+  showMessage = true;
+
+
+  protected readonly recipes = [
+    {
+      id: 1,
+      name: 'Spaghetti Carbonara',
+      description: 'A classic Italian pasta dish.',
+      ingredients: [
+        { name: 'Spaghetti', quantity: 200, unit: 'g' },
+      ],
+    },
+    {
+      id: 2,
+      name: 'Caprese Salad',
+      description: 'A simple Italian salad.',
+      ingredients: [
+        { name: 'Tomatoes', quantity: 2, unit: 'each' },
+      ],
+    },
+  ];
 }

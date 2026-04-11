@@ -1,1 +1,13 @@
 <h1>{{ title }}</h1>
+
+@if (showMessage) {
+  <p>Welcome to your recipe box</p>
+}
+
+<ul>
+  @for (recipe of recipes; track recipe.id) {
+    <li>{{ recipe.name }}</li>
+  }
+</ul>
+
+<p>Total recipes: {{ recipes.length }}</p>
