@@ -1,45 +1,37 @@
 # Teach Me Angular Like I'm Five --- Script
 
+Uses https://github.com/alyssamichelle/recipe-box-the-sequel/tree/1-where-everything-lives
+
 ## Intro
-Hello and Howdy! Goodness am I glad you are here today! I feel so blessed to share with you all something I love so so dearly, and that is Angular, the JS framework. My name is Alyssa Nicoll, I am the Senior Developer Advocate at Progress and a long standing Google Developer Expert for Angular.
 
-Today, I am going to use Angular’s MCP tutor during some of the demo and to get us started.
+When I started putting this talk together, I kept thinking about how
+much our jobs have changed.\
+As Ady Osmani, a Google Chrome engineering lead, has been talking about,
+developers are evolving into orchestrators of AI.
 
-Not because we can’t build this ourselves, but because this is how a lot of developers are actually going to learn Angular now and moving forward.
+We have tools now that can generate Angular code in seconds.\
+But that doesn't mean we understand what they're giving us.
 
-As far as Angular's tutor guide in their MCP server goes, it is flexible, it adapts to your level, and you can skip ahead or have it pre-fill sections depending on how you like to learn. Once my session is over, it will be a really great resource for you to continue practicing and learning on your own, so be sure to bookmark it.
+So today, I'm not going to teach Angular the way it used to be taught.
 
-When I started putting this talk together, I kept thinking about how much our jobs have changed.
+We're not going to memorize syntax.\
+We're not going to drill terminology.
 
-As Ady Osmani, who leads engineering at Google Chrome puts it, we’re moving from writing every line of code ourselves to orchestrating systems of AI that help us build.
-
-We have tools now that can generate Angular code in seconds.
-
-But that doesn’t mean we understand what they’re giving us.
-
-So today, I’m going to teach Angular NOT the way it used to be taught.
-
-We’re not going to memorize syntax.
-
-We’re not going to drill terminology.
-
-Instead, I want to show you how Angular actually behaves…
-
-so when AI gives you code, you can look at it and say:
-
-Yeah, that makes sense… or nope, something’s off.
+Instead, I want to show you how Angular actually behaves...\
+so when AI gives you code, you can look at it and say:\
+Yeah, that makes sense... or nope, something's off.
 
 Because the job has changed.
 
-You don’t need to memorize Angular, or React, or JS anymore.
+You don't need to memorize Angular anymore.
 
-You need to understand them well enough to question what AI gives you.
+You need to understand it well enough to question what AI gives you.
 
 ------------------------------------------------------------------------
 
 ## CLI Setup
 
-To start off, we are going to generate a new Angular App with the CLI,
+To start off, I generated a new Angular App with the CLI,
 this is the exact command I used to get going, if you want to follow
 along later at home:
 
@@ -53,19 +45,18 @@ let's just dive into the angular.
 
 ## Section: How This App Is Structured
 
-We just generated this app… but what are we actually looking at?
+Before we start changing things... let's take a second to understand
+what we're actually looking at.
 
 Angular apps aren't random. Things live in specific places for a reason.
 
-Let's go ahead and open the file called app.ts, here you'll see the default application component.
+At the center of everything is a component.
 
-At the center of everything is a component. You could say, it's components all the way down.
-
-This file controls the logic.
+Our component file controls the logic.
 
 ``` ts
-export class App {
-  protected readonly title = 'Recipe Box';
+export class AppComponent {
+  title = 'My Recipes';
 }
 ```
 
@@ -85,7 +76,7 @@ This file controls what you see.
 
 This is just HTML...
 
-with a little bit of syntax that lets us plug in values.
+with a little bit of syntax that lets us plug in values. This double curly braces is what angular calls interpolation and allows us to print out values/variables in our UI.
 
 ------------------------------------------------------------------------
 

@@ -1,131 +1,227 @@
-# Reacting to the User
+# Section 3 --- Reacting to the User
 
-## Intro
+Uses: https://github.com/alyssamichelle/recipe-box-the-sequel/tree/3-reacting-to-the-user
 
-Last section we talked about showing data — interpolation, the UI reflecting values in your component class.
+ALEX has a fabulous idea, relate to react call method vs just ref
 
-Now we flip direction.
+## 🧩 Reacting to the User
 
-The browser already knows how to handle clicks, typing, focus, submit. Angular’s job is to let you plug your TypeScript into those moments without crawling the DOM with manual listeners everywhere.
+So far, everything we've done has been one direction.
 
----
+We changed the data...\
+and the UI reflected it.
 
-## The anchor
+------------------------------------------------------------------------
 
-The line to keep in your head is simple.
+But real apps aren't just displays.
 
-The user does something → your code responds.
+Users interact with them.
 
-Not maybe. Not eventually. That’s the contract. Template says what happened; the class says what to do about it.
+They click things.\
+They type.\
+They trigger actions.
 
----
+------------------------------------------------------------------------
 
-## Event syntax — parentheses
+So now we're going to flip the direction.
 
-Property binding uses square brackets. Event binding uses parentheses.
+Instead of data flowing to the UI...
 
-So `(click)` on an element means: when this element fires a click, call the expression on the right — usually a method on your component.
+we're going to let the UI send signals back to our code.
 
-Same idea shows up elsewhere. `(ngModelChange)` when the search box changes. `(ngSubmit)` when the user tries to save a form. Different events, same handshake — user gesture in the template, handler in the class.
+------------------------------------------------------------------------
 
----
+This is where event binding comes in.
 
-## Demo — increment and decrement (servings)
+------------------------------------------------------------------------
 
-In our Recipe Box, the detail screen lets people scale a recipe. We keep a `servings` signal and nudge it with plus and minus buttons.
+In Angular, you'll see this syntax with parentheses.
 
-In the class:
-
-```ts
-protected readonly servings = signal(1);
-
-protected bumpServings(delta: number): void {
-  this.servings.update((value) => Math.max(1, value + delta));
-}
+``` html
+<button (click)="addRecipe()">Add Recipe</button>
 ```
 
-On the buttons — we’re using Kendo buttons in the full app, but the Angular part is identical to a plain `button`:
+------------------------------------------------------------------------
 
-```html
-<button
-  type="button"
-  [disabled]="servings() <= 1"
-  (click)="bumpServings(-1)"
->
-  −
-</button>
-<button type="button" (click)="bumpServings(1)">+</button>
-```
+This is saying:
 
-Click minus — `bumpServings` runs with negative one. Click plus — positive one. The template stays dumb; it just forwards the intent.
+When this button is clicked...\
+run this function in my component.
 
-The ingredients list is computed from `servings()`, so when the signal updates, the list updates. Same reflection idea as before — only now the user is the one nudging the data.
+------------------------------------------------------------------------
 
----
+Our component is wired with these two functions that do...
+and in the browser, when the button is clicked these events fires and the variables update in their respective places in the ui
 
-## Toggle — same pattern, boolean state
+``` ts
+recipes = [
+  { id: 1, name: 'Tacos' },
+  { id: 2, name: 'Pasta' }
+];
 
-We don’t have a favorite star wired to a click in the UI yet, but the model already has `isFavorite` and the list shows a badge when it’s true.
-
-A toggle is the same shape as servings, just with a boolean instead of a number. One method, one `(click)`:
-
-```ts
-protected readonly expanded = signal(false);
-
-protected toggleExpanded(): void {
-  this.expanded.update((value) => !value);
-}
-```
-
-```html
-<button type="button" (click)="toggleExpanded()">
-  {{ expanded() ? 'Hide' : 'Show' }} details
-</button>
-```
-
-One handler, flip the state, let the template react. That’s the mental model for favorites too — eventually a `(click)` that updates the recipe through a service.
-
----
-
-## Add item — submit and the service
-
-Adding a recipe isn’t always a raw `(click)` on a random div. In our app, the list’s Add recipe button navigates with `routerLink`. The actual create happens on the form: user hits Save recipe, the form fires `ngSubmit`, and we call into `RecipeService.addRecipe`.
-
-Template hook:
-
-```html
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <!-- fields -->
-  <button type="submit">Save recipe</button>
-</form>
-```
-
-Handler — trimmed to the happy path you’d narrate live:
-
-```ts
-protected onSubmit(): void {
-  if (this.form.invalid) {
-    this.form.markAllAsTouched();
-    return;
-  }
-  const value = this.form.getRawValue();
-  this.recipeService.addRecipe({
-    name: value.name,
-    description: value.description,
-    imgUrl: value.imgUrl,
-    isFavorite: false,
-    ingredients: [{ name: 'Customize later', quantity: 1, unit: 'batch' }],
+addRecipe() {
+  this.recipes.push({
+    id: Date.now(),
+    name: 'New Recipe'
   });
-  void this.router.navigate(['/recipes']);
 }
 ```
 
-So the user’s action is submit. Your code validates, pushes a new recipe into the signal-backed list in the service, and sends them back to the list. New row shows up — again, UI following data.
+------------------------------------------------------------------------
 
----
+Now when I click the button...
 
-## Close
+a new item gets added.
 
-Parentheses for events. Methods for responses. Signals or service state for what actually changes.
+------------------------------------------------------------------------
 
-The user does something → your code responds. Everything else is wiring and good names.
+And because our UI is already tied to that data...
+
+it updates automatically.
+
+------------------------------------------------------------------------
+
+So now we have a full loop:
+
+The UI displays data\
+The user interacts with the UI\
+That interaction changes the data\
+And the UI reflects it again
+
+------------------------------------------------------------------------
+
+Let's look at another simple example.
+
+------------------------------------------------------------------------
+
+Maybe we want to toggle something on and off.
+
+``` ts
+showFavorites = false;
+
+toggleFavorites() {
+  this.showFavorites = !this.showFavorites;
+}
+```
+
+``` html
+<button (click)="toggleFavorites()">Toggle Favorites</button>
+
+@if (showFavorites) {
+  <p>Showing favorites</p>
+}
+```
+
+------------------------------------------------------------------------
+
+Now when I click the button...
+
+the UI changes.
+
+------------------------------------------------------------------------
+
+Again, I'm not manually updating the DOM.
+
+I'm just responding to an event...
+
+and changing my data.
+
+------------------------------------------------------------------------
+
+So here's the pattern:
+
+The user does something\
+your code responds\
+the data changes\
+and the UI reflects it
+
+------------------------------------------------------------------------
+
+This is how your app becomes interactive.
+
+------------------------------------------------------------------------
+
+And just like before, when you're working with AI...
+
+you want to be able to trace this flow.
+
+When something happens in the UI...
+
+what code is actually running?
+
+What data is changing?
+
+------------------------------------------------------------------------
+
+Because if you can follow that chain...
+
+you understand what your app is doing.
+
+------------------------------------------------------------------------
+
+And if you can't...
+
+that's where things start to feel confusing very quickly.
+
+
+FREE BALL MOMENT
+``` html
+<h1>{{ title }}</h1>
+
+<button (click)="addRecipe()">Add Recipe</button>
+<button (click)="toggleFavorites()">Toggle Favorites</button>
+
+<p>Total recipes: {{ recipes.length }}</p>
+
+@if (showMessage) {
+  <p>Welcome to your recipe box</p>
+}
+
+@if (showFavorites) {
+  <p>Showing favorites</p>
+  @for (recipe of recipes; track recipe.id) {
+    @if (recipe.isFavorite) {
+      <li>{{ recipe.name }}</li>
+    }
+  }
+} @else {
+  <p>Showing all recipes</p>
+  @for (recipe of recipes; track recipe.id) {
+    <li>{{ recipe.name }}</li>
+  }
+}
+```
+
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected readonly title = 'Recipe Box';
+  showMessage = false;
+
+  recipes = [
+    { id: 1, name: 'Tacos', isFavorite: false },
+    { id: 2, name: 'Pasta', isFavorite: false },
+    { id: 3, name: 'Cookies', isFavorite: true }
+  ];
+
+  addRecipe() {
+    this.recipes.push({
+      id: Date.now(),
+      name: 'New Recipe',
+      isFavorite: false
+    });
+  }
+
+  showFavorites = false;
+
+  toggleFavorites() {
+    this.showFavorites = !this.showFavorites;
+  }
+}
+```

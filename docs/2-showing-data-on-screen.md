@@ -1,85 +1,100 @@
-# Showing Data on the Screen
+# Section 2 --- Showing Data on the Screen
 
-## Intro
+Uses: https://github.com/alyssamichelle/recipe-box-the-sequel/tree/1-where-everything-lives
 
-Alright — you’ve got a component. You’ve got a class with some fields on it.
+## 🧩 Showing Data on the Screen
 
-The next question everyone hits is: how do I get that stuff to actually show up?
+In section 1, we glossed over this syntax, but I'd like to call it out rn real quick. This is called interpolation, these double curly braces in the template surrounding a variable.
 
-That’s what this bit is about. We’re not wiring APIs yet. We’re not doing fancy state. We’re doing the smallest possible bridge between your TypeScript and what people see in the browser.
-
----
-
-## The anchor
-
-Here’s the line I want you to remember.
-
-The UI is just a reflection of your data.
-
-If the data changes, the picture updates. If you’re staring at the screen wondering why nothing moved, you’re usually looking at the wrong layer — either the data never changed, or you never connected the template to it.
-
-Interpolation is the first connection. It’s the hello world of binding.
-
----
-
-## What interpolation is
-
-In Angular templates, double curly braces mean: take this expression, run it in the context of your component, turn the result into text, and drop it in the DOM.
-
-So you’re not hand-building strings in the TypeScript and pushing HTML around. You’re declaring: this spot on the page shows this value.
-
----
-
-## Demo — a title on the page
-
-Say your component has a title — maybe you’re building a recipe box, so it’s literally the name of the app.
-
-In the class:
-
-```ts
-export class App {
-  protected readonly title = 'Recipe Box';
-}
-```
-
-In the template:
-
-```html
+``` html
 <h1>{{ title }}</h1>
 ```
 
-That’s it. Angular reads `title` from the component, renders the string, and you get a heading.
 
-`protected` and `readonly` are TypeScript choices — the template can still see `title` because the template is part of the same component. Don’t let access modifiers freak you out here; the important part is: field on the class, same name in the braces.
+All this is doing is saying:
 
----
+Take this value from my code\
+and display it right here in the UI.
 
-## One more property — count
+Your UI is just a reflection of your data.
 
-Same idea with something numeric. Maybe you’re showing how many recipes you have — even if for now it’s a hard-coded number just to prove the point.
+------------------------------------------------------------------------
 
-```ts
-export class App {
-  protected readonly title = 'Recipe Box';
-  protected readonly recipeCount = 0;
-}
+But Let's make this a little more interesting.
+
+------------------------------------------------------------------------
+
+Instead of just a title, let's say we'd like to display that recipe list we created.
+
+``` ts
+recipes = [
+  { id: 1, name: 'Tacos' },
+  { id: 2, name: 'Pasta' },
+  { id: 3, name: 'Cookies' }
+];
 ```
 
-```html
-<h1>{{ title }}</h1>
-<p>{{ recipeCount }} recipes</p>
+------------------------------------------------------------------------
+
+Now I can show something like a count.
+
+``` html
+<p>Total recipes: {{ recipes.length }}</p>
 ```
 
-When you load real data later, you swap where `recipeCount` comes from. The template doesn’t care. It still says: show me whatever `recipeCount` is right now.
+------------------------------------------------------------------------
 
-That’s the reflection idea again. The paragraph isn’t special Angular magic — it’s just displaying the current value of a property.
+And if I add another item...
 
----
+``` ts
+this.recipes.push({ id: 4, name: 'Pizza' });
+```
 
-## Close
+...the number updates.
 
-So interpolation is your first binding. Curly braces, expression, text on screen.
+------------------------------------------------------------------------
 
-Next steps in a real app are things like lists, conditionals, and events — but the mental model starts here.
+Same pattern.
 
-The UI is a reflection of your data. Wire the template to the component, and you’re already demoing something honest.
+Change the data\the UI reflects it.
+
+------------------------------------------------------------------------
+
+At this point, we're not doing anything Angular-specific or complicated.
+
+We're just connecting data to the screen.
+
+------------------------------------------------------------------------
+
+And this is really important when you're working with AI.
+
+Because AI will happily generate UI for you...
+
+but if you don't understand where the data is coming from\
+or how it's being displayed...
+
+it's very easy to trust something that's actually wrong.
+
+------------------------------------------------------------------------
+
+So anytime you see something on the screen...
+
+you should be able to ask:
+
+Where is that value coming from?
+
+------------------------------------------------------------------------
+
+Because if you can answer that...
+
+you understand what your app is doing.
+
+------------------------------------------------------------------------
+
+And if you can't...
+
+that's where bugs start to hide.
+
+------------------------------------------------------------------------
+
+This is the foundation for everything else we're about to do.
